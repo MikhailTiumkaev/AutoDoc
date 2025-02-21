@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {}
+    "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {
+    "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
         "projectName": "AutoDocApi",
-        "projectPath": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+        "projectPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\obj\\",
+        "outputPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config"
