@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {}
+    "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {
+    "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+        "projectUniqueName": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
         "projectName": "AutoDocApi",
-        "projectPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+        "projectPath": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
         "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\obj\\",
+        "outputPath": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -46,6 +46,14 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
