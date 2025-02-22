@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "AutoDocApi/1.0.0": {
         "dependencies": {
+          "Bogus": "35.6.2",
           "Microsoft.AspNetCore.OpenApi": "8.0.7",
           "Microsoft.EntityFrameworkCore.Design": "9.0.2",
           "Microsoft.EntityFrameworkCore.InMemory": "9.0.2",
@@ -16,6 +17,14 @@
         },
         "runtime": {
           "AutoDocApi.dll": {}
+        }
+      },
+      "Bogus/35.6.2": {
+        "runtime": {
+          "lib/net6.0/Bogus.dll": {
+            "assemblyVersion": "35.6.2.0",
+            "fileVersion": "35.6.2.0"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -728,6 +737,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Bogus/35.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u3XtrfDqwNDqmJiUA6AnUBGU2169av3BtBOrcgp1JZb2RVCg6P6JOTcJvXCLDd6YiRZFKxuoujiWM951Ze8D5w==",
+      "path": "bogus/35.6.2",
+      "hashPath": "bogus.35.6.2.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

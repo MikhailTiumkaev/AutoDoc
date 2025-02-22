@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JsenmUB/NaU=",
+  "dgSpecHash": "BT83z0U1D+4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+  "projectFilePath": "c:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\GGPC\\.nuget\\packages\\bogus\\35.6.2\\bogus.35.6.2.nupkg.sha512",
     "C:\\Users\\GGPC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\GGPC\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.7\\microsoft.aspnetcore.openapi.8.0.7.nupkg.sha512",
     "C:\\Users\\GGPC\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

@@ -1,6 +1,7 @@
 using AutoDocApi.Models;
 using AutoDocApi.Database;
 using Microsoft.EntityFrameworkCore;
+using AutoDocApi.Contract;
 
 namespace AutoDocApi.Endpoints
 {
@@ -10,7 +11,7 @@ namespace AutoDocApi.Endpoints
         {
             app.MapPost("/todotask", async (
                 CreateTodoTaskRequest createTodoTaskRequest,
-                ApplicationDbContext dbContext,
+                AppDbContext dbContext,
                 CancellationToken cancellationToken
             ) =>
             {
@@ -28,7 +29,7 @@ namespace AutoDocApi.Endpoints
 
             app.MapGet("/todotask/{id}", async (
                 string id,
-                ApplicationDbContext context,
+                AppDbContext context,
                 CancellationToken cancellationToken) =>
                 {
                     if (!Guid.TryParse(id, out var guid))
