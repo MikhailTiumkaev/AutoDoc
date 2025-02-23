@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoDocApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250223081704_Initial")]
-    partial class Initial
+    [Migration("20250223213325_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace AutoDocApi.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
-                    b.Property<int?>("TodoTaskId")
+                    b.Property<int>("TodoTaskId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -72,9 +72,13 @@ namespace AutoDocApi.Migrations
 
             modelBuilder.Entity("AutoDocApi.Models.Payload", b =>
                 {
-                    b.HasOne("AutoDocApi.Models.TodoTask", null)
+                    b.HasOne("AutoDocApi.Models.TodoTask", "TodoTask")
                         .WithMany("Payloads")
-                        .HasForeignKey("TodoTaskId");
+                        .HasForeignKey("TodoTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TodoTask");
                 });
 
             modelBuilder.Entity("AutoDocApi.Models.TodoTask", b =>

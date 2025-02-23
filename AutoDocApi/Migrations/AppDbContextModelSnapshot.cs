@@ -34,7 +34,7 @@ namespace AutoDocApi.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
-                    b.Property<int?>("TodoTaskId")
+                    b.Property<int>("TodoTaskId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -69,9 +69,13 @@ namespace AutoDocApi.Migrations
 
             modelBuilder.Entity("AutoDocApi.Models.Payload", b =>
                 {
-                    b.HasOne("AutoDocApi.Models.TodoTask", null)
+                    b.HasOne("AutoDocApi.Models.TodoTask", "TodoTask")
                         .WithMany("Payloads")
-                        .HasForeignKey("TodoTaskId");
+                        .HasForeignKey("TodoTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TodoTask");
                 });
 
             modelBuilder.Entity("AutoDocApi.Models.TodoTask", b =>
