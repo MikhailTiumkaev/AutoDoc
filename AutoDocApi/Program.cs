@@ -2,6 +2,7 @@ using AutoDocApi.Endpoints;
 using AutoDocApi.Database;
 using Microsoft.EntityFrameworkCore;
 using AutoDocApi.Models;
+using AutoDocApi.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(
             
             if(context.Set<TodoTask>().Any()) return;
 
-            var taskStatus = new[] { "In Progress", "Completed", "Delayed", "Cancelled", "New" };
+            var taskStatus = new[] { TaskStatusEnum.InProgress, TaskStatusEnum.Pending, TaskStatusEnum.Cancelled, TaskStatusEnum.Done };
             var faker = new Bogus.Faker<TodoTask>()
                 .UseSeed(1337)
                 .RuleFor(x => x.Id, f => Guid.NewGuid())

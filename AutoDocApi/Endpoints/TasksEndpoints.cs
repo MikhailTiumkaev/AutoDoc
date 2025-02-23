@@ -5,7 +5,7 @@ using AutoDocApi.Contract;
 
 namespace AutoDocApi.Endpoints
 {
-    public static class MapEndpoints
+    public static class MapToDoTasksEndpoints
     {
         public static void MapTasksEndpoints(this IEndpointRouteBuilder app)
         {
@@ -18,6 +18,8 @@ namespace AutoDocApi.Endpoints
                 TodoTask todoTask = new()
                 {
                     Title = createTodoTaskRequest.Title,
+                    Id = Guid.NewGuid(),
+                    Status = "New",
                     DueDate = createTodoTaskRequest.DueDate
                 };
 
@@ -26,6 +28,28 @@ namespace AutoDocApi.Endpoints
 
                 return Results.Created($"/todotask/{todoTask!.Id}", todoTask);
             });
+
+            app.MapGet("/todotask", async (
+                string id,
+                AppDbContext context,
+                CancellationToken cancellationToken) =>
+                {
+                    if (!Guid.TryParse(id, out var guid))
+                    {
+                        return Results.BadRequest();
+                    }
+
+                    var todoTask = await context.TodoTasks
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(t=> t.Id == guid, cancellationToken: cancellationToken);
+
+                    if (todoTask is null)
+                    {
+                        return Results.NotFound();
+                    }
+
+                    return Results.Ok(todoTask);
+                });
 
             app.MapGet("/todotask/{id}", async (
                 string id,
@@ -48,7 +72,6 @@ namespace AutoDocApi.Endpoints
 
                     return Results.Ok(todoTask);
                 });
-
         }
     }
 }
