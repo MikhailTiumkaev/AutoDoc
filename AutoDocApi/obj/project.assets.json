@@ -3424,11 +3424,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+      "projectUniqueName": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
       "projectName": "AutoDocApi",
-      "projectPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+      "projectPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
       "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\obj\\",
+      "outputPath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDocApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\GGPC\\AppData\\Roaming\\NuGet\\NuGet.Config"

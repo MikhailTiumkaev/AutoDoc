@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5fXXWSBQ504=",
+  "dgSpecHash": "aslbb4k2wV0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
+  "projectFilePath": "C:\\Users\\GGPC\\source\\repos\\AutoDoc\\AutoDocApi\\AutoDocApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GGPC\\.nuget\\packages\\bogus\\35.6.2\\bogus.35.6.2.nupkg.sha512",
     "C:\\Users\\GGPC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
