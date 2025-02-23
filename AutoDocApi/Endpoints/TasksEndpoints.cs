@@ -30,15 +30,18 @@ namespace AutoDocApi.Endpoints
             });
 
             app.MapGet("/todotasks", async (
-                string status,
-                int? page,
-                int? pageSize,
-                AppDbContext context,
-                CancellationToken cancellationToken) =>
+                    AppDbContext context,
+                    CancellationToken cancellationToken,
+                    string status,
+                    int page = 1,
+                    int pageSize = 10
+                ) =>
                 {
                     var todoTask = await context.TodoTasks
                     .AsNoTracking()
                     .Where(t => t.Status == status)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
                     .ToListAsync(cancellationToken: cancellationToken);
 
                     if (todoTask is null)
@@ -73,7 +76,6 @@ namespace AutoDocApi.Endpoints
                 CancellationToken cancellationToken) =>
             {
                 var todoTask = await context.TodoTasks
-                    .AsNoTracking()
                     .FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
 
                 if (todoTask is null) return Results.NotFound();
@@ -93,7 +95,7 @@ namespace AutoDocApi.Endpoints
                 {
                     context.TodoTasks.Remove(todoTask);
                     await context.SaveChangesAsync();
-                    return Results.Ok();
+                    return Results.NoContent();
                 }
 
                 return Results.NotFound();

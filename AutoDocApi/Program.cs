@@ -20,7 +20,6 @@ builder.Services.AddDbContext<AppDbContext>(
             var taskStatus = new[] { TaskStatusEnum.InProgress, TaskStatusEnum.Pending, TaskStatusEnum.Cancelled, TaskStatusEnum.Done };
             var faker = new Bogus.Faker<TodoTask>()
                 .UseSeed(1337)
-                .RuleFor(x => x.Id, f => f.IndexFaker)
                 .RuleFor(x => x.Title, f => f.Lorem.Sentence())
                 .RuleFor(o => o.Status, f => f.PickRandom(taskStatus))
                 .RuleFor(x => x.DueDate, f => f.Date.Future().ToUniversalTime());
