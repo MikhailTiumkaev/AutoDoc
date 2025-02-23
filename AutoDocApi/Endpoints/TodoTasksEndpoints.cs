@@ -3,7 +3,6 @@ using AutoDocApi.Database;
 using Microsoft.EntityFrameworkCore;
 using AutoDocApi.Contract;
 using AutoDocApi.Constants;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AutoDocApi.Endpoints;
 

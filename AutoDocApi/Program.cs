@@ -18,7 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(
             
             if(context.Set<TodoTask>().Any()) return;
 
-            var taskStatus = new[] { TaskStatusEnum.InProgress, TaskStatusEnum.Pending, TaskStatusEnum.Cancelled, TaskStatusEnum.Done };
+            var taskStatus = new[] { TaskStatusEnum.InProgress, TaskStatusEnum.Pending, TaskStatusEnum.Cancelled, TaskStatusEnum.Completed };
             var faker = new Bogus.Faker<TodoTask>()
                 .UseSeed(1337)
                 .RuleFor(x => x.Title, f => f.Lorem.Sentence())

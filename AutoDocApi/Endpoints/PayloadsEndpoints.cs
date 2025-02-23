@@ -1,7 +1,8 @@
 using AutoDocApi.Database;
+using AutoDocApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AutoDocApi.Models;
+namespace AutoDocApi.Endpoints;
 
 public static class PayloadsEndpoints
 {
