@@ -17,28 +17,27 @@ public static class PayloadsEndpoints
                    .AsNoTracking()
                    .FirstOrDefaultAsync(t => t.Id == id, cancellationToken: ct);
 
-            if (todoTask is null)
+            if (todoTask is not null)
             {
-                return Results.NotFound();
-            }
-
-            foreach (var file in files)
-            {
-                using (var target = new MemoryStream())
+                foreach (var file in files)
                 {
-                    await file.CopyToAsync(target, ct);
-                    context.Payloads.Add(new Payload
+                    using (var target = new MemoryStream())
                     {
-                        TodoTaskId = id,
-                        Content = target.ToArray()
-                    });
-                }
-                ;
+                        await file.CopyToAsync(target, ct);
+                        context.Payloads.Add(new Payload
+                        {
+                            TodoTaskId = id,
+                            Content = target.ToArray()
+                        });
+                    };
 
-                await context.SaveChangesAsync(ct);
+                    await context.SaveChangesAsync(ct);
+                }
+
+                return Results.Ok();
             }
 
-            return Results.Ok();
+            return Results.NotFound();
         })
         .DisableAntiforgery();
 
@@ -57,12 +56,10 @@ public static class PayloadsEndpoints
                 .Take(pageSize)
                 .ToListAsync(cancellationToken: ct);
 
-                if (tasksPayloads is null)
-                {
-                    return Results.NoContent();
-                }
+                return (tasksPayloads is null)
+                    ? Results.NoContent()
+                    : Results.Ok(tasksPayloads);              
 
-                return Results.Ok(tasksPayloads);
             });
 
         app.MapDelete("/payloads/{id}", async (int id, AppDbContext context) =>
