@@ -2,6 +2,7 @@ using AutoDocApi.Models;
 using AutoDocApi.Database;
 using Microsoft.EntityFrameworkCore;
 using AutoDocApi.Contract;
+using AutoDocApi.Constants;
 
 namespace AutoDocApi.Endpoints
 {
@@ -18,8 +19,7 @@ namespace AutoDocApi.Endpoints
                 TodoTask todoTask = new()
                 {
                     Title = createTodoTaskRequest.Title,
-                    Id = Guid.NewGuid(),
-                    Status = "New",
+                    Status = TaskStatusEnum.Pending,
                     DueDate = createTodoTaskRequest.DueDate
                 };
 
@@ -50,18 +50,13 @@ namespace AutoDocApi.Endpoints
                 });
 
             app.MapGet("/todotasks/{id}", async (
-                string id,
+                int id,
                 AppDbContext context,
                 CancellationToken cancellationToken) =>
                 {
-                    if (!Guid.TryParse(id, out var guid))
-                    {
-                        return Results.BadRequest();
-                    }
-
                     var todoTask = await context.TodoTasks
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(t => t.Id == guid, cancellationToken: cancellationToken);
+                    .FirstOrDefaultAsync(t => t.Id == id, cancellationToken: cancellationToken);
 
                     if (todoTask is null)
                     {
@@ -71,16 +66,15 @@ namespace AutoDocApi.Endpoints
                     return Results.Ok(todoTask);
                 });
 
-            app.MapPut("/todotasks/{id}", async (string id, UpdateTodoTaskRequest dto, AppDbContext context) =>
+            app.MapPut("/todotasks/{id}", async (
+                int id, 
+                UpdateTodoTaskRequest dto,
+                AppDbContext context,
+                CancellationToken cancellationToken) =>
             {
-                if (!Guid.TryParse(id, out var guid))
-                    {
-                        return Results.BadRequest();
-                    }
-
                 var todoTask = await context.TodoTasks
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(t => t.Id == guid);
+                    .FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
 
                 if (todoTask is null) return Results.NotFound();
 
@@ -88,7 +82,7 @@ namespace AutoDocApi.Endpoints
                 todoTask.DueDate = dto.DueDate;
                 todoTask.Status = dto.Status;
 
-                await context.SaveChangesAsync();
+                await context.SaveChangesAsync(cancellationToken);
 
                 return Results.NoContent();
             });
