@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoDocApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250223220425_Update")]
-    partial class Update
+    [Migration("20250223220830_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -7,11 +7,25 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoDocApi.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Payloads",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Content = table.Column<byte[]>(type: "bytea", nullable: false),
+                    TodoTaskId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payloads", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "TodoTasks",
                 columns: table => new
@@ -26,31 +40,6 @@ namespace AutoDocApi.Migrations
                 {
                     table.PrimaryKey("PK_TodoTasks", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Payloads",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Content = table.Column<byte[]>(type: "bytea", nullable: false),
-                    TodoTaskId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payloads", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Payloads_TodoTasks_TodoTaskId",
-                        column: x => x.TodoTaskId,
-                        principalTable: "TodoTasks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Payloads_TodoTaskId",
-                table: "Payloads",
-                column: "TodoTaskId");
         }
 
         /// <inheritdoc />
