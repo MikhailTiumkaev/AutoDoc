@@ -6,13 +6,13 @@ using AutoDocApi.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAntiforgery(options =>
-{
-    // Set Cookie properties using CookieBuilder properties.
-    options.FormFieldName = "files";
-    options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
-    options.SuppressXFrameOptionsHeader = false;
-});
+// builder.Services.AddAntiforgery(options =>
+// {
+//     // Set Cookie properties using CookieBuilder properties.
+//     options.FormFieldName = "files";
+//     options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+//     options.SuppressXFrameOptionsHeader = false;
+// });
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,7 +55,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 var app = builder.Build();
 
-app.UseAntiforgery();
+// app.UseAntiforgery();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -6,6 +6,5 @@ namespace AutoDocApi.Models
         public string Title { get; set; } = default!;
         public string? Status { get; set; }
         public DateTime DueDate { get; set; }
-        public List<Payload> Payloads { get; set; } = new List<Payload>()!;
     }
 }

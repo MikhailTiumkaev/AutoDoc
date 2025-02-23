@@ -6,9 +6,6 @@ namespace  AutoDocApi.Models
     {
         public int Id { get; set; }
         public byte[] Content { get; set; } = default!;
-
-        public int TodoTaskId { get; set; }
-        public virtual TodoTask TodoTask { get; set; } = default!;
-        
+        public int TodoTaskId { get; set; }        
     }
 }
