@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoDocApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c8c94f45bbb839dfc6d4de1e681e9d06180d5d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a2dd9029c7d0470f0541680e93d076ea58f68c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoDocApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoDocApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
