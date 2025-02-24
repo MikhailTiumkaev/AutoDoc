@@ -1,6 +1,6 @@
-@AutoDocApi_HostAddress = http://localhost:5214
+@AutoDocApi_HostAddress = http://localhost:5000
 
-GET {{AutoDocApi_HostAddress}}/weatherforecast/
+GET {{AutoDocApi_HostAddress}}/todotasks/
 Accept: application/json
 
 ###

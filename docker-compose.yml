@@ -1,0 +1,16 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  autodoc.database:
+    image: postgres:latest
+    container_name: autodoc.database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres 
+      POSTGRES_DB: autodoc
+    volumes:
+      - ./.containers/autodoc-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
