@@ -39,7 +39,7 @@ public static class TodoTasksHandler
 
     public static async Task<IResult> GetTodoTasksByQuery(
         AppDbContext context,
-        string status,
+        string? status = TaskStatusEnum.Pending,
         int page = 1,
         int pageSize = 10,
         CancellationToken ct = default)

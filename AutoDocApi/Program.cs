@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
     
     //FOR DEMO PURPOSES ONLY
     dbContext.Database.Migrate();
-    dbContext.Database.EnsureCreated();
+    await dbContext.Database.EnsureCreatedAsync();
 }
 
 app.Run();
