@@ -30,14 +30,16 @@ namespace AutoDocApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<byte[]>("Content")
+                    b.Property<string>("PayloadLocation")
                         .IsRequired()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
                     b.Property<int>("TodoTaskId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TodoTaskId");
 
                     b.ToTable("Payloads");
                 });
@@ -63,6 +65,20 @@ namespace AutoDocApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TodoTasks");
+                });
+
+            modelBuilder.Entity("AutoDocApi.Models.Payload", b =>
+                {
+                    b.HasOne("AutoDocApi.Models.TodoTask", null)
+                        .WithMany("Payloads")
+                        .HasForeignKey("TodoTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AutoDocApi.Models.TodoTask", b =>
+                {
+                    b.Navigation("Payloads");
                 });
 #pragma warning restore 612, 618
         }

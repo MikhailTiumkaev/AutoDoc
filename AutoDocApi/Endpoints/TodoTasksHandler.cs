@@ -66,8 +66,9 @@ public static class TodoTasksHandler
     {
         var todoTask = await context.TodoTasks
                 .AsNoTracking()
+                .Include(t => t.Payloads)
                 .FirstOrDefaultAsync(t => t.Id == id, cancellationToken: ct);
-
+            
         if (todoTask is null)
         {
             return Results.Problem(
@@ -104,10 +105,10 @@ public static class TodoTasksHandler
         int id,
         CancellationToken ct = default)
     {
-        if (await context.TodoTasks.FindAsync(id) is TodoTask todoTask)
+        if (await context.TodoTasks.FindAsync(id, ct) is TodoTask todoTask)
         {
             context.TodoTasks.Remove(todoTask);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(ct);
             return Results.NoContent();
         }
 

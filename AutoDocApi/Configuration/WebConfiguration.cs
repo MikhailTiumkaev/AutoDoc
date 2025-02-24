@@ -16,5 +16,10 @@ public static class WebConfiguration
                 context.ProblemDetails.Extensions.TryAdd("traceId", activity?.Id);
             };
         });
+        services.Configure<FormOptions>(options =>
+        {
+            options.MultipartBodyLengthLimit = 1024 * 1024 * 1024; // 1 GB
+        });
+        
     }
 }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoDocApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250223220830_Initial")]
-    partial class Initial
+    [Migration("20250224081545_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,14 +33,16 @@ namespace AutoDocApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<byte[]>("Content")
+                    b.Property<string>("PayloadLocation")
                         .IsRequired()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
                     b.Property<int>("TodoTaskId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TodoTaskId");
 
                     b.ToTable("Payloads");
                 });
@@ -66,6 +68,20 @@ namespace AutoDocApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TodoTasks");
+                });
+
+            modelBuilder.Entity("AutoDocApi.Models.Payload", b =>
+                {
+                    b.HasOne("AutoDocApi.Models.TodoTask", null)
+                        .WithMany("Payloads")
+                        .HasForeignKey("TodoTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AutoDocApi.Models.TodoTask", b =>
+                {
+                    b.Navigation("Payloads");
                 });
 #pragma warning restore 612, 618
         }

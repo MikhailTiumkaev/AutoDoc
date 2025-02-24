@@ -5,7 +5,13 @@ using AutoDocApi.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 1024 * 1024 * 1024; // 1 GB
+});
+
 builder.Services.AddWebServices();
+builder.Services.AddFileServices();
 builder.Services.AddDataServices(builder.Configuration);
 
 var app = builder.Build();
