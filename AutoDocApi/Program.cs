@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
     await using var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     
     //FOR DEMO PURPOSES ONLY
-    dbContext.Database.Migrate();
+    await dbContext.Database.MigrateAsync();
     await dbContext.Database.EnsureCreatedAsync();
 }
 
