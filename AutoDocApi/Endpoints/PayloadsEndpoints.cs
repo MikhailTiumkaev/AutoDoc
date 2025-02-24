@@ -14,14 +14,14 @@ public static class PayloadsHandler
     }
 
     public static async Task<IResult> UploadFiles(
-        int id,
+        int todoTaskId,
         IFormFileCollection files,
         AppDbContext context,
         CancellationToken ct = default)
     {
         var todoTask = await context.TodoTasks
                    .AsNoTracking()
-                   .FirstOrDefaultAsync(t => t.Id == id, cancellationToken: ct);
+                   .FirstOrDefaultAsync(t => t.Id == todoTaskId, cancellationToken: ct);
 
         if (todoTask is not null)
         {
@@ -32,7 +32,7 @@ public static class PayloadsHandler
                     await file.CopyToAsync(target, ct);
                     context.Payloads.Add(new Payload
                     {
-                        TodoTaskId = id,
+                        TodoTaskId = todoTaskId,
                         Content = target.ToArray()
                     });
                 };
